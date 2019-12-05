@@ -1,0 +1,28 @@
+.form {
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.formInput {
+    width: 33%;
+    border-radius: 7px;
+    outline: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #074c91;
+    margin-left: 10px;
+    padding-left: 5px;
+    margin-right: 10px;
+}
+
+.formSearchBtn {
+    background: #074c91;
+    font-family: "Comic Sans MS", sans-serif;
+    border-radius: 7px;
+    border-color: #074c91;
+    outline: 0;
+    color: white;
+}
+
+.formSearchBtn:hover {
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+}
