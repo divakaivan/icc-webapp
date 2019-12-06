@@ -2,8 +2,9 @@ import React from "react";
 import "../Stylesheets/form.css";
 
 const chatObj = {
-    "Accounting": "link_to_accounting",
-    "Computer Science": "link_to_cs"
+    "accounting": "link_to_accounting",
+    "computer science": "link_to_cs",
+    "finance": "link_to_finance"
 };
 
 class Form extends React.Component {
@@ -13,13 +14,14 @@ class Form extends React.Component {
             userSearch: "",
             submitted: false
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleSubmit(event) {
+    handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            submitted: false
         });
     };
 
@@ -31,14 +33,15 @@ class Form extends React.Component {
     }
 
     render() {
+        const {userSearch, submitted} = this.state;
         return (
             <div>
-                <form className="form" onSubmit={this.handleSubmit}>
+                <form className="form">
                     <label>Enter your major:</label>
-                    <input className="formInput" name="userSearch" type="text" value={this.state.userSearch} onChange={this.handleSubmit}/>
+                    <input className="formInput" name="userSearch" type="text" value={userSearch} onChange={this.handleChange}/>
                     <input className="formSearchBtn" type="submit" onClick={this.handleClick}/>
                 </form>
-                {this.state.submitted ? <p>{chatObj[this.state.userSearch]}</p> : null}
+                {submitted && chatObj.hasOwnProperty(userSearch) ? chatObj[userSearch] : null}
             </div>
         );
     }
