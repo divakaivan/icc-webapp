@@ -1,7 +1,32 @@
 .form {
     font-family: "Comic Sans MS", sans-serif;
+    margin: auto;
+    width: 50%;
+    padding-top: 10px;
+}
+.tooltip {
+    position: relative;
 }
 
+.tooltip-text {
+    visibility: hidden;
+    background-color: #f6fcff;
+    color: #074c91;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    width: 100%;
+    margin-left: -100%;
+    bottom: 100%;
+    font-size: 16px;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
 .formInput {
     width: 33%;
     border-radius: 7px;

@@ -25,8 +25,8 @@ class Form extends React.Component {
         });
     };
 
-    handleClick(e) {
-        e.preventDefault();
+    handleClick(event) {
+        event.preventDefault();
         this.setState({
             submitted: true
         })
@@ -35,10 +35,12 @@ class Form extends React.Component {
     render() {
         const {userSearch, submitted} = this.state;
         return (
-            <div>
-                <form className="form">
+            <div className="form">
+                <form>
                     <label>Enter your major:</label>
-                    <input className="formInput" name="userSearch" type="text" value={userSearch} onChange={this.handleChange}/>
+                    <span className="tooltip"><input className="formInput" name="userSearch" type="text"
+                                                     value={userSearch} onChange={this.handleChange}/>
+                    <span className="tooltip-text">Enter your major. E.g. accounting, finance, etc.</span></span>
                     <input className="formSearchBtn" type="submit" onClick={this.handleClick}/>
                 </form>
                 {submitted && chatObj.hasOwnProperty(userSearch) ? chatObj[userSearch] : null}
