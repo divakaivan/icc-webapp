@@ -48,7 +48,7 @@ class Form extends React.Component {
                     <input className="formSearchBtn" type="submit" onClick={this.handleClick}/>
                 </form>
                 {submitted && ChatObj.hasOwnProperty(userSearch) ?
-                    ChatObj[userSearch] :submitted && userSearch === '' ?
+                    ChatObj[userSearch] : submitted && userSearch === '' ?
                         'Please enter your major' : submitted && userSearch !== '' ?
                             'Currently there is no chat set up for your major' : null}
             </div>

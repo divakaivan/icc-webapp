@@ -15,6 +15,7 @@ class App extends React.Component {
     }
 
     handleUniChange(event) {
+        event.preventDefault();
         this.setState({
             selectedUni: event.target.value
         })
@@ -23,9 +24,9 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Header selectedUni={this.state.selectedUni}/>
+                <Header selectedUni={this.state.selectedUni} />
                 <H3Header selectedUni={this.state.selectedUni} text={"Step 1: Choose your university"}/>
-                <University selectedUni={this.state.selectedUni} handleChange={this.handleUniChange}/>
+                <University handleChange={this.handleUniChange}/>
                 {this.state.selectedUni ? <Form selectedUni={this.state.selectedUni}/> : null}
             </React.Fragment>
         )
