@@ -15,9 +15,8 @@ class App extends React.Component {
     }
 
     handleUniChange(event) {
-        event.preventDefault();
         this.setState({
-            selectedUni: event.target.value
+            selectedUni: event[0].uni
         })
     }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import "../Stylesheets/university.css";
+import Select from "react-dropdown-select";
+
 
 const listOfUnis = [
     {
@@ -45,12 +47,12 @@ class University extends React.Component {
     render() {
         return(
             <div className="university">
-                    <select className="dropdown" name="university" onChange={this.props.handleChange}>
-                        <option selected disabled>Choose your university</option>
-                        {listOfUnis.sort((a, b) => (a.uni > b.uni) ? 1 : -1).map((item) => {
-                            return <option value={item.uni} key={item.uni}>{item.uni}</option>
-                        })}
-                    </select>
+                <Select valueField={"uni"}
+                        labelField={"uni"}
+                        onChange={this.props.handleChange}
+                        searchBy="uni"
+                        options={listOfUnis}
+                />
             </div>
         )
     }

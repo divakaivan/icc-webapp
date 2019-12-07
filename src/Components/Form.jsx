@@ -45,11 +45,11 @@ class Form extends React.Component {
                                onChange={this.handleChange}/>
                         <span className="tooltip-text">Enter your major. E.g. accounting, finance, etc.</span>
                     </span>
-                    <input className="formSearchBtn" type="submit" onClick={this.handleClick}/>
+                    <input className="formSearchBtn" value="Search" type="submit" onClick={this.handleClick}/>
                 </form>
                 {submitted && ChatObj.hasOwnProperty(userSearch) ?
                     ChatObj[userSearch] : submitted && userSearch === '' ?
-                        'Please enter your major' : submitted && userSearch !== '' ?
+                        <span id="enter-major-warn">Please enter your major</span> : submitted && userSearch !== '' ?
                             'Currently there is no chat set up for your major' : null}
             </div>
         );
