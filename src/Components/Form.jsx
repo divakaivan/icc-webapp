@@ -1,11 +1,6 @@
 import React from "react";
 import "../Stylesheets/form.css";
-
-const chatObj = {
-    "accounting": "link_to_accounting",
-    "computer science": "link_to_cs",
-    "finance": "link_to_finance"
-};
+import ChatObj from "./ChatObj";
 
 class Form extends React.Component {
     constructor(props) {
@@ -42,12 +37,20 @@ class Form extends React.Component {
             <div className={cssClasses.join(' ')}>
                 <form>
                     <label>Enter your major:</label>
-                    <span className="tooltip"><input className="formInput" name="userSearch" type="text"
-                                                     value={userSearch} onChange={this.handleChange}/>
-                    <span className="tooltip-text">Enter your major. E.g. accounting, finance, etc.</span></span>
+                    <span className="tooltip">
+                        <input className="formInput"
+                               name="userSearch"
+                               type="text"
+                               value={userSearch}
+                               onChange={this.handleChange}/>
+                        <span className="tooltip-text">Enter your major. E.g. accounting, finance, etc.</span>
+                    </span>
                     <input className="formSearchBtn" type="submit" onClick={this.handleClick}/>
                 </form>
-                {submitted && chatObj.hasOwnProperty(userSearch) ? chatObj[userSearch] : null}
+                {submitted && ChatObj.hasOwnProperty(userSearch) ?
+                    ChatObj[userSearch] :submitted && userSearch === '' ?
+                        'Please enter your major' : submitted && userSearch !== '' ?
+                            'Currently there is no chat set up for your major' : null}
             </div>
         );
     }
