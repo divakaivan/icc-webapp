@@ -33,9 +33,13 @@ class Form extends React.Component {
     }
 
     render() {
+        const cssClasses = [
+            'form',
+            this.props.selectedUni ? 'formShow' : 'form'
+        ];
         const {userSearch, submitted} = this.state;
         return (
-            <div className="form">
+            <div className={cssClasses.join(' ')}>
                 <form>
                     <label>Enter your major:</label>
                     <span className="tooltip"><input className="formInput" name="userSearch" type="text"

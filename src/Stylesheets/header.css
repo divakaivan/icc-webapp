@@ -5,4 +5,24 @@
     color: white;
     font-size: 30px;
     font-family: "Comic Sans MS", sans-serif;
+    transition: all 0.3s ease-in;
+}
+
+.uniAppear {
+    animation: appearUni 1.5s ease-in forwards;
+}
+
+@keyframes appearUni {
+    0% {
+        opacity: 0;
+
+    }
+    50% {
+        opacity: 0.5;
+
+    }
+    100% {
+        opacity: 1;
+
+    }
 }

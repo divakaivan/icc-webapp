@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import University from "./Components/University";
+import H3Header from "./Components/H3Header";
 
 class App extends React.Component {
     constructor(props) {
@@ -10,10 +11,10 @@ class App extends React.Component {
         this.state = {
             selectedUni: ""
         };
-        this.handleChange = this.handleChange.bind(this)
+        this.handleUniChange = this.handleUniChange.bind(this)
     }
 
-    handleChange(event) {
+    handleUniChange(event) {
         this.setState({
             selectedUni: event.target.value
         })
@@ -23,8 +24,9 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <Header selectedUni={this.state.selectedUni}/>
-                <University selectedUni={this.state.selectedUni} handleChange={this.handleChange}/>
-                <Form/>
+                <H3Header selectedUni={this.state.selectedUni} text={"Step 1: Choose your university"}/>
+                <University selectedUni={this.state.selectedUni} handleChange={this.handleUniChange}/>
+                {this.state.selectedUni ? <Form selectedUni={this.state.selectedUni}/> : null}
             </React.Fragment>
         )
     }
