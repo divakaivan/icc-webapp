@@ -35,6 +35,7 @@ class Form extends React.Component {
             this.props.selectedUni ? 'formShow' : 'form'
         ];
         const {userSearch, submitted} = this.state;
+        const {selectedUni} = this.props;
         return (
             <React.Fragment>
                 <div className={cssClasses.join(' ')}>
@@ -49,8 +50,8 @@ class Form extends React.Component {
                         </Info>
                         <input className="formSearchBtn" value="Search" type="submit" onClick={this.handleClick}/>
                     </form>
-                    {submitted && ChatObj.hasOwnProperty(userSearch) ?
-                        ChatObj[userSearch] : submitted && userSearch === '' ?
+                    {submitted && ChatObj.hasOwnProperty(selectedUni) && ChatObj[selectedUni].hasOwnProperty(userSearch) ?
+                        ChatObj[selectedUni][userSearch] : submitted && userSearch === '' ?
                             <span
                                 id="enter-major-warn">Please enter your major</span> : submitted && userSearch !== '' ?
                                 'Currently there is no chat set up for your major' : null}
