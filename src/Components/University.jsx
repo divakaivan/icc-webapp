@@ -1,6 +1,7 @@
 import React from "react";
 import "../Stylesheets/university.css";
 import Select from "react-dropdown-select";
+import H3Header from "./H3Header";
 
 
 const listOfUnis = [
@@ -47,6 +48,7 @@ class University extends React.Component {
     render() {
         return(
             <div className="university">
+                <H3Header text={"Step 1: Choose your university"}/>
                 <Select valueField={"uni"}
                         labelField={"uni"}
                         onChange={this.props.handleChange}

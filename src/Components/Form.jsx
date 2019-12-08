@@ -1,6 +1,8 @@
 import React from "react";
 import "../Stylesheets/form.css";
 import ChatObj from "./ChatObj";
+import H3Header from "./H3Header";
+import Info from "./Info";
 
 class Form extends React.Component {
     constructor(props) {
@@ -34,24 +36,26 @@ class Form extends React.Component {
         ];
         const {userSearch, submitted} = this.state;
         return (
-            <div className={cssClasses.join(' ')}>
-                <form>
-                    <label>Enter your major:</label>
-                    <span className="tooltip">
-                        <input className="formInput"
-                               name="userSearch"
-                               type="text"
-                               value={userSearch}
-                               onChange={this.handleChange}/>
-                        <span className="tooltip-text">Enter your major. E.g. accounting, finance, etc.</span>
-                    </span>
-                    <input className="formSearchBtn" value="Search" type="submit" onClick={this.handleClick}/>
-                </form>
-                {submitted && ChatObj.hasOwnProperty(userSearch) ?
-                    ChatObj[userSearch] : submitted && userSearch === '' ?
-                        <span id="enter-major-warn">Please enter your major</span> : submitted && userSearch !== '' ?
-                            'Currently there is no chat set up for your major' : null}
-            </div>
+            <React.Fragment>
+                <div className={cssClasses.join(' ')}>
+                    <H3Header text={"Step 2: Enter your major"}/>
+                    <form>
+                        <Info tooltipText="E.g. finance, computer science">
+                            <input className="formInput"
+                                   name="userSearch"
+                                   type="text"
+                                   value={userSearch}
+                                   onChange={this.handleChange}/>
+                        </Info>
+                        <input className="formSearchBtn" value="Search" type="submit" onClick={this.handleClick}/>
+                    </form>
+                    {submitted && ChatObj.hasOwnProperty(userSearch) ?
+                        ChatObj[userSearch] : submitted && userSearch === '' ?
+                            <span
+                                id="enter-major-warn">Please enter your major</span> : submitted && userSearch !== '' ?
+                                'Currently there is no chat set up for your major' : null}
+                </div>
+            </React.Fragment>
         );
     }
 }
