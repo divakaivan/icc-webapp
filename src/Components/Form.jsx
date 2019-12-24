@@ -1,8 +1,8 @@
 import React from "react";
 import "../Stylesheets/form.css";
-import ChatObj from "./ChatObj";
 import H3Header from "./H3Header";
 import Info from "./Info";
+import Result from "./Result";
 
 class Form extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class Form extends React.Component {
 
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value.toLowerCase(),
             submitted: false
         });
     };
@@ -50,11 +50,7 @@ class Form extends React.Component {
                         </Info>
                         <input className="formSearchBtn" value="Search" type="submit" onClick={this.handleClick}/>
                     </form>
-                    {submitted && ChatObj.hasOwnProperty(selectedUni) && ChatObj[selectedUni].hasOwnProperty(userSearch) ?
-                        ChatObj[selectedUni][userSearch] : submitted && userSearch === '' ?
-                            <span
-                                id="enter-major-warn">Please enter your major</span> : submitted && userSearch !== '' ?
-                                'Currently there is no chat set up for your major' : null}
+                    <Result submitted={submitted} userSearch={userSearch} selectedUni={selectedUni}/>
                 </div>
             </React.Fragment>
         );

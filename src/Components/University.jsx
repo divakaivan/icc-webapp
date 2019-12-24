@@ -19,7 +19,7 @@ class University extends React.Component {
                 <Select valueField={"uni"}
                         labelField={"uni"}
                         onChange={this.props.handleChange}
-                        searchBy="uni"
+                        searchable={false}
                         options={listOfUnis}
                 />
             </div>
